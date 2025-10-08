@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  app:
+    # Use the image built from the Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # This line tells Docker to load variables from the .env file in the root directory
+    env_file:
+      - .env
+    ports:
+      # Map container port 3001 to host port 3001
+      - "3001:3001"
+    # Set NODE_ENV to production inside the container
+    environment:
+      - NODE_ENV=production
